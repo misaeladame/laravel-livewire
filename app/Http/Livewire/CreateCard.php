@@ -39,4 +39,6 @@ class CreateCard extends Component
     {
         return view('livewire.create-card');
     }
+
+
 }
