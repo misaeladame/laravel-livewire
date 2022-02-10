@@ -146,7 +146,7 @@
                             @endphp
                         @endforeach --}}
 
-                        {{ $this->llenarTabla($tabla1) }}
+                        {{ $this->llenarTabla($tabla[0]) }}
 
                     </td>
                 </tr>
@@ -154,18 +154,7 @@
                 <tr>
                     <td>
                         Tabla 2:
-                        @foreach ($selectedSalio as $salio)
-                            {{-- {{$salio}} --}}
-                            @php
-
-                                if (in_array($salio, $tabla2)) {
-                                    echo $salio . ",";
-                                }
-                            @endphp
-                        @endforeach
-
-                        {{-- {{ llenarTabla($tabla1) }} --}}
-
+                        {{ $this->llenarTabla($tabla[1]) }}
                     </td>
                 </tr>
             </tbody>
