@@ -146,7 +146,7 @@
                             @endphp
                         @endforeach --}}
 
-                        {{ $this->llenarTabla($tabla[0]) }}
+                        {{ $this->llenarTabla($tablas[0]) }}
 
                     </td>
                 </tr>
@@ -154,9 +154,21 @@
                 <tr>
                     <td>
                         Tabla 2:
-                        {{ $this->llenarTabla($tabla[1]) }}
+                        {{ $this->llenarTabla($tablas[1]) }}
                     </td>
                 </tr>
+
+                @while ($i < 20)
+                <tr>
+                    <td>
+                        Tabla {{ $i + 1 }}:
+                        {{ $this->llenarTabla($tablas[$i]) }}
+                    </td>
+                    @php $i++; @endphp
+
+                </tr>
+                @endwhile
+
             </tbody>
         </table>
     </div>

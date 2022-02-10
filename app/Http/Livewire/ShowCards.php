@@ -17,7 +17,7 @@ class ShowCards extends Component
     // public $tabla1 = [25, 28, 34, 5, 21, 45, 6, 42, 4, 12, 29, 53, 47, 48, 49, 43];
     // public $tabla2 = [13, 14, 9, 40, 18, 32, 49, 5, 1, 38, 52, 7, 22, 26, 3];
     // public $tabla3 = [25, 14, 40, 9, 40];
-    public $tabla = [
+    public $tablas = [
         [25, 28, 34, 5, 21, 45, 6, 42, 4, 12, 29, 53, 47, 48, 49, 43], // Tabla 1
         [13, 14, 9, 40, 18, 32, 49, 5, 1, 38, 52, 7, 22, 26, 3, 8], // Tabla 2
         [29, 53, 37, 47, 16, 19, 9, 22, 8, 24, 50, 15, 6, 23, 1, 32], // Tabla 3
@@ -39,6 +39,8 @@ class ShowCards extends Component
         [35, 3, 39, 27, 43, 10, 34, 36, 6, 37, 2, 24, 30, 8, 14, 19], // Tabla 19
         [29, 27, 43, 40, 36, 11, 6, 41, 20, 53, 26, 21, 39, 44, 2, 50] // Tabla 20
     ];
+
+    public $i = 0;
 
     // protected $listeners = ['render' => 'render'];
     protected $listeners = ['render'];
