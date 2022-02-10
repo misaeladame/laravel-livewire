@@ -13,7 +13,7 @@
 
             <div class="px-6 py-4">
                 {{-- <input type="text" wire:model="search"> --}}
-                <x-jet-input class="w-full" placeholder="Escriba una carta..." type="text" wire:model="search"/>
+                <x-jet-input class="w-full" placeholder="Escriba una carta..." type="text" wire:model="search" />
             </div>
 
 
@@ -23,14 +23,64 @@
                     <thead class="bg-gray-50">
                         <tr>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                ID</th>
+                                class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                wire:click="order('id')">
+                                ID
+
+                                {{-- sort --}}
+                                @if ($sort == 'id')
+
+                                    @if ($direction == 'asc')
+                                        <i class="fas fa-sort-alpha-up-alt float-right mt-1"></i>
+
+                                    @else
+                                        <i class="fas fa-sort-alpha-down-alt float-right mt-1"></i>
+                                    @endif
+
+                                @else
+                                    <i class="fas fa-sort float-right mt-1"></i>
+                                @endif
+
+                            </th>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Carta</th>
+                                class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                wire:click="order('carta')">
+                                Carta
+
+                                {{-- sort --}}
+                                @if ($sort == 'carta')
+                                    @if ($direction == 'asc')
+                                        <i class="fas fa-sort-alpha-up-alt float-right mt-1"></i>
+
+                                    @else
+                                        <i class="fas fa-sort-alpha-down-alt float-right mt-1"></i>
+                                    @endif
+
+                                @else
+                                    <i class="fas fa-sort float-right mt-1"></i>
+                                @endif
+
+
+                            </th>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Salio</th>
+                                class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                wire:click="order('salio')">
+                                Salio
+
+                                {{-- sort --}}
+                                @if ($sort == 'salio')
+                                    @if ($direction == 'asc')
+                                        <i class="fas fa-sort-alpha-up-alt float-right mt-1"></i>
+
+                                    @else
+                                        <i class="fas fa-sort-alpha-down-alt float-right mt-1"></i>
+                                    @endif
+
+                                @else
+                                    <i class="fas fa-sort float-right mt-1"></i>
+                                @endif
+
+                            </th>
 
                             <th scope="col" class="relative px-6 py-3">
                                 <span class="sr-only">Edit</span>
@@ -43,17 +93,17 @@
                             <tr>
                                 <td class="px-6 py-4">
                                     <div class="text-sm text-gray-900">
-                                        {{$card->id}}
+                                        {{ $card->id }}
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="text-sm text-gray-900">
-                                        {{$card->carta}}
+                                        {{ $card->carta }}
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="text-sm text-gray-900">
-                                        {{$card->salio}}
+                                        {{ $card->salio }}
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
