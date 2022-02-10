@@ -12,6 +12,10 @@ class ShowCards extends Component
     public $sort = 'id';
     public $direction = 'asc';
 
+    // protected $listeners = ['render' => 'render'];
+    protected $listeners = ['render'];
+
+
     public function render()
     {
 
