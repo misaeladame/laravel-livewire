@@ -18,7 +18,7 @@ class ShowCards extends Component
     // public $tabla2 = [13, 14, 9, 40, 18, 32, 49, 5, 1, 38, 52, 7, 22, 26, 3];
     // public $tabla3 = [25, 14, 40, 9, 40];
     public $tablas = [
-        [25, 28, 34, 5, 21, 45, 6, 42, 4, 12, 29, 53, 47, 48, 49, 43], // Tabla 1
+        [25, 28], // Tabla 1
         [13, 14, 9, 40, 18, 32, 49, 5, 1, 38, 52, 7, 22, 26, 3, 8], // Tabla 2
         [29, 53, 37, 47, 16, 19, 9, 22, 8, 24, 50, 15, 6, 23, 1, 32], // Tabla 3
         [50, 17, 38, 47, 39, 7, 12, 23, 3, 52, 6, 22, 10, 28, 19, 48], // Tabla 4
@@ -33,14 +33,19 @@ class ShowCards extends Component
         [30, 38, 4, 53, 46, 11, 41, 17, 37, 35, 14, 15, 33, 20, 10, 8], // Tabla 13
         [54, 42, 15, 2, 12, 45, 27, 13, 25, 51, 7, 37, 18, 14, 38, 33], // Tabla 14
         [13, 4, 16, 38, 23, 27, 33, 49, 31, 24, 54, 41, 30, 48, 47, 25], // Tabla 15
-        [41, 40, 14, 1, 3, 27, 18, 39, 9, 23, 35, 45, 37, 26, 34,36], // Tabla 16
-        [14, 18, 21, 43, 12, 23, 51, 49, 53, 13, 42, 44, 7,52, 40, 19], // Tabla 17
+        [41, 40, 14, 1, 3, 27, 18, 39, 9, 23, 35, 45, 37, 26, 34, 36], // Tabla 16
+        [14, 18, 21, 43, 12, 23, 51, 49, 53, 13, 42, 44, 7, 52, 40, 19], // Tabla 17
         [3, 12, 32, 17, 20, 26, 19, 52, 24, 30, 39, 46, 25, 29, 18, 36], // Tabla 18
         [35, 3, 39, 27, 43, 10, 34, 36, 6, 37, 2, 24, 30, 8, 14, 19], // Tabla 19
         [29, 27, 43, 40, 36, 11, 6, 41, 20, 53, 26, 21, 39, 44, 2, 50] // Tabla 20
     ];
 
     public $i = 0;
+    public $numeroDeCartas = 20;
+
+    public $contadorTablas = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    public $numeroDeCartasPorTabla = 16;
+
 
     // protected $listeners = ['render' => 'render'];
     protected $listeners = ['render'];
@@ -77,13 +82,45 @@ class ShowCards extends Component
         }
     }
 
-    public function llenarTabla($tabla)
+    public function llenarTabla($tabla, $i)
     {
         foreach ($this->selectedSalio as $salio) {
-
             if (in_array($salio, $tabla)) {
                 echo $salio . ",";
+                //$this->contadorTablas[$i]++;
+                //$this->ganador($this->selectedSalio, $i);
+
             }
         }
     }
+
+    // public function ganador($selectedSalio, $indice) {
+
+
+    //     //print_r($this->tablas[$indice]);
+    //     //print_r($selectedSalio);
+
+
+
+
+    //     if(count($selectedSalio) == count($this->tablas[$indice]) &&
+    //        !array_diff($selectedSalio , $this->tablas[$indice] )) {
+    //         echo "GANASTE";
+    //     }
+    // }
+
+    public function ganador($tabla, $i)
+    {
+        foreach ($this->selectedSalio as $salio) {
+            if (in_array($salio, $tabla)) {
+
+                if(array_intersect($this->selectedSalio, $this->tablas[$i]) == $this->tablas[$i]) {
+                    echo "GANASTE";
+                    break;
+                }
+
+            }
+        }
+    }
+
 }

@@ -134,9 +134,9 @@
         <table>
             <tbody>
                 <tr>
-                    <td>
+                    {{-- <td>
                         Tabla 1:
-                        {{-- @foreach ($selectedSalio as $salio)
+                        @foreach ($selectedSalio as $salio)
                             {{$salio}}
                             @php
 
@@ -144,7 +144,7 @@
                                     echo $salio . ",";
                                 }
                             @endphp
-                        @endforeach --}}
+                        @endforeach
 
                         {{ $this->llenarTabla($tablas[0]) }}
 
@@ -156,20 +156,34 @@
                         Tabla 2:
                         {{ $this->llenarTabla($tablas[1]) }}
                     </td>
-                </tr>
-
-                @while ($i < 20)
+                </tr> --}}
+                @while ($i < $numeroDeCartas)
                 <tr>
                     <td>
-                        Tabla {{ $i + 1 }}:
-                        {{ $this->llenarTabla($tablas[$i]) }}
+                        <b>Tabla {{ $i + 1 }}: </b>
+                        {{ $this->llenarTabla($tablas[$i], $i) }}
+                        {{ $this->ganador($tablas[$i], $i);}}
                     </td>
-                    @php $i++; @endphp
+
+                    @php
+                    //$contadorTablas[$indice]++;
+
+                    $i++;
+
+
+                    @endphp
 
                 </tr>
                 @endwhile
-
             </tbody>
         </table>
+
+        {{-- <table style="margin-top: 4em;">
+            <tbody>
+                <tr>
+                    <td>{{$ganador}}</td>
+                </tr>
+            </tbody>
+        </table> --}}
     </div>
 </div>
