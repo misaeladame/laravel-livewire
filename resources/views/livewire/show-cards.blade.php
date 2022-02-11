@@ -162,7 +162,7 @@
                     <td>
                         <b>Tabla {{ $i + 1 }}: </b>
                         {{ $this->llenarTabla($tablas[$i], $i) }}
-                        {{ $this->ganador($tablas[$i], $i);}}
+                        {{ $this->ganador($tablas[$i], $i) }}
                     </td>
 
                     @php

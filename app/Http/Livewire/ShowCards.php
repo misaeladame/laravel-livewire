@@ -43,7 +43,7 @@ class ShowCards extends Component
     public $i = 0;
     public $numeroDeCartas = 20;
 
-    public $contadorTablas = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    //public $contadorTablas = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     public $numeroDeCartasPorTabla = 16;
 
 
@@ -111,15 +111,35 @@ class ShowCards extends Component
 
     public function ganador($tabla, $i)
     {
-        foreach ($this->selectedSalio as $salio) {
-            if (in_array($salio, $tabla)) {
 
-                if(array_intersect($this->selectedSalio, $this->tablas[$i]) == $this->tablas[$i]) {
-                    echo "GANASTE";
-                    break;
-                }
+        // foreach ($this->selectedSalio as $salio) {
+        //     if (in_array($salio, $tabla)) {
 
-            }
+        //         if(array_intersect($this->selectedSalio, $this->tablas[$i]) == $this->tablas[$i]) {
+        //             echo "GANASTE";
+
+        //         }
+
+        //     }
+        // }
+
+        // print_r($this->tablas[$i]);
+        // print_r($this->selectedSalio);
+
+        // sort($this->tablas[$i]);
+        // sort($this->selectedSalio);
+
+        // print_r($this->tablas[$i]);
+        // print_r($this->selectedSalio);
+
+        $elementos = array_intersect($this->selectedSalio, $this->tablas[$i]);
+
+        //print_r($elementos);
+
+
+
+        if(count($elementos) == $this->numeroDeCartasPorTabla) {
+            echo "GANASTE";
         }
     }
 
