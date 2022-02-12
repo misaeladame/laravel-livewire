@@ -1,21 +1,11 @@
 <div>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {{-- {{$posts}} --}}
-        <!-- This example requires Tailwind CSS v2.0+ -->
         <x-table>
 
-            <div class="px-6 py-4 flex items-center">
-                {{-- <input type="text" wire:model="search"> --}}
+            <div class="px-5 py-4 flex items-center">
                 <x-jet-input class="mr-4" placeholder="Escriba una carta..." type="text" wire:model="search" />
 
-                @livewire('create-card')
+                {{-- @livewire('create-card') --}}
             </div>
 
 
@@ -29,7 +19,6 @@
                                 wire:click="order('id')">
                                 ID
 
-                                {{-- sort --}}
                                 @if ($sort == 'id')
 
                                     @if ($direction == 'asc')
@@ -49,7 +38,6 @@
                                 wire:click="order('carta')">
                                 Carta
 
-                                {{-- sort --}}
                                 @if ($sort == 'carta')
                                     @if ($direction == 'asc')
                                         <i class="fas fa-sort-alpha-up-alt float-right mt-1"></i>
@@ -65,27 +53,9 @@
 
                             </th>
                             <th scope="col"
-                                class="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                 wire:click="order('salio')">
                                 Salio
-
-                                {{-- sort --}}
-                                @if ($sort == 'salio')
-                                    @if ($direction == 'asc')
-                                        <i class="fas fa-sort-alpha-up-alt float-right mt-1"></i>
-
-                                    @else
-                                        <i class="fas fa-sort-alpha-down-alt float-right mt-1"></i>
-                                    @endif
-
-                                @else
-                                    <i class="fas fa-sort float-right mt-1"></i>
-                                @endif
-
-                            </th>
-
-                            <th scope="col" class="relative px-6 py-3">
-                                <span class="sr-only">Edit</span>
                             </th>
                         </tr>
                     </thead>
@@ -106,19 +76,12 @@
                                 <td class="px-6 py-4">
                                     <div class="text-sm text-gray-900">
                                         <input wire:model="selectedSalio" type="checkbox" value="{{ $card->id }}">
-
-                                        {{-- {{ $card->salio }} --}}
                                     </div>
                                 </td>
-                                {{-- <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                </td> --}}
                             </tr>
                         @endforeach
-                        <!-- More people... -->
                     </tbody>
                 </table>
-
 
 
             @else
@@ -129,61 +92,24 @@
 
         </x-table>
 
-        {{-- {{var_export($selectedSalio)}} --}}
-
         <table>
             <tbody>
                 <tr>
-                    {{-- <td>
-                        Tabla 1:
-                        @foreach ($selectedSalio as $salio)
-                            {{$salio}}
-                            @php
-
-                                if (in_array($salio, $tabla1)) {
-                                    echo $salio . ",";
-                                }
-                            @endphp
-                        @endforeach
-
-                        {{ $this->llenarTabla($tablas[0]) }}
-
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Tabla 2:
-                        {{ $this->llenarTabla($tablas[1]) }}
-                    </td>
-                </tr> --}}
-                @while ($i < $numeroDeCartas)
+                    @while ($i < $numeroDeCartas)
                 <tr>
                     <td>
                         <b>Tabla {{ $i + 1 }}: </b>
-                        {{ $this->llenarTabla($tablas[$i], $i) }}
-                        {{ $this->ganador($tablas[$i], $i) }}
+                        {{ $this->llenarTabla($tablas[$i]) }}
+                        <strong style="color: green;">{{ $this->ganador($i) }}</strong>
                     </td>
 
                     @php
-                    //$contadorTablas[$indice]++;
-
-                    $i++;
-
-
+                        $i++;
                     @endphp
 
                 </tr>
                 @endwhile
             </tbody>
         </table>
-
-        {{-- <table style="margin-top: 4em;">
-            <tbody>
-                <tr>
-                    <td>{{$ganador}}</td>
-                </tr>
-            </tbody>
-        </table> --}}
     </div>
 </div>

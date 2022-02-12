@@ -14,9 +14,6 @@ class ShowCards extends Component
 
     public $selectedSalio = [];
 
-    // public $tabla1 = [25, 28, 34, 5, 21, 45, 6, 42, 4, 12, 29, 53, 47, 48, 49, 43];
-    // public $tabla2 = [13, 14, 9, 40, 18, 32, 49, 5, 1, 38, 52, 7, 22, 26, 3];
-    // public $tabla3 = [25, 14, 40, 9, 40];
     public $tablas = [
         [25, 28], // Tabla 1
         [13, 14, 9, 40, 18, 32, 49, 5, 1, 38, 52, 7, 22, 26, 3, 8], // Tabla 2
@@ -42,8 +39,6 @@ class ShowCards extends Component
 
     public $i = 0;
     public $numeroDeCartas = 20;
-
-    //public $contadorTablas = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     public $numeroDeCartasPorTabla = 16;
 
 
@@ -58,11 +53,6 @@ class ShowCards extends Component
             ->orWhere('salio', 'like', '%' . $this->search . '%')
             ->orderBy($this->sort, $this->direction)
             ->get();
-
-
-        // foreach ($this->selectedSalio as $indice => $salio) {
-        //     echo $indice;
-        // }
 
         return view('livewire.show-cards', compact('cards'));
     }
@@ -82,61 +72,18 @@ class ShowCards extends Component
         }
     }
 
-    public function llenarTabla($tabla, $i)
+    public function llenarTabla($tabla)
     {
         foreach ($this->selectedSalio as $salio) {
             if (in_array($salio, $tabla)) {
-                echo $salio . ",";
-                //$this->contadorTablas[$i]++;
-                //$this->ganador($this->selectedSalio, $i);
-
+                echo $salio . ", ";
             }
         }
     }
 
-    // public function ganador($selectedSalio, $indice) {
-
-
-    //     //print_r($this->tablas[$indice]);
-    //     //print_r($selectedSalio);
-
-
-
-
-    //     if(count($selectedSalio) == count($this->tablas[$indice]) &&
-    //        !array_diff($selectedSalio , $this->tablas[$indice] )) {
-    //         echo "GANASTE";
-    //     }
-    // }
-
-    public function ganador($tabla, $i)
+    public function ganador($i)
     {
-
-        // foreach ($this->selectedSalio as $salio) {
-        //     if (in_array($salio, $tabla)) {
-
-        //         if(array_intersect($this->selectedSalio, $this->tablas[$i]) == $this->tablas[$i]) {
-        //             echo "GANASTE";
-
-        //         }
-
-        //     }
-        // }
-
-        // print_r($this->tablas[$i]);
-        // print_r($this->selectedSalio);
-
-        // sort($this->tablas[$i]);
-        // sort($this->selectedSalio);
-
-        // print_r($this->tablas[$i]);
-        // print_r($this->selectedSalio);
-
         $elementos = array_intersect($this->selectedSalio, $this->tablas[$i]);
-
-        //print_r($elementos);
-
-
 
         if(count($elementos) == $this->numeroDeCartasPorTabla) {
             echo "GANASTE";

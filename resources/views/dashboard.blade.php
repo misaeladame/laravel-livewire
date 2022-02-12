@@ -7,11 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-            {{-- @livewire('show-cards', ['title' => 'Este es un título de prueba']) --}}
-
             @livewire('nav.show-cards')
-
         </div>
     </div>
 </x-app-layout>
